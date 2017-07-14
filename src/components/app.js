@@ -56,18 +56,17 @@ export default class App extends Component {
 
 		return (
 			<div id="app">
+			<Header hamburgerClick={this.onSetSidebarOpen.bind(this, true)}/>
 			<Sidebar sidebar={sidebarContent}
 						styles={this.sidebarStyle()}
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}>
-            <b>Main content</b>
+						<Router onChange={this.handleRoute}>
+							<Home path="/" />
+							<Profile path="/profile/" user="me" />
+							<Profile path="/profile/:user" />
+						</Router>
       </Sidebar>
-				<Header hamburgerClick={this.onSetSidebarOpen.bind(this, true)}/>
-				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-					<Profile path="/profile/" user="me" />
-					<Profile path="/profile/:user" />
-				</Router>
 			</div>
 		);
 	}
