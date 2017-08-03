@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
-import { Link } from 'preact-router/match';
-import style from '../style';
+// import { Link } from 'preact-router/match';
+// import style from '../style';
 
 
 import Header from './header';
@@ -15,32 +15,26 @@ import Profile from '../routes/profile';
 
 export default class App extends Component {
 
-	constructor(props) {
-	    super(props);
+	  onSetSidebar(open) {
+	    this.setState({
+			sidebarOpen: open
+		});
+	}
 
-	    this.state = {
-	      sidebarOpen: false
-	    }
-
-	    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-	  }
-
-	  onSetSidebarOpen(open) {
-	    this.setState({sidebarOpen: open});
-	  }
-
-		sidebarStyle(){
-			return {
-				sidebar:{
-					zIndex: 3,
-					width: '60%',
-					backgroundColor: '#673AB7'
-				},
-				overlay:{
-					zIndex: 2
-				}
+	sidebarStyle(){
+		return {
+			sidebar:
+			{
+				zIndex: 3,
+				width: '60%',
+				backgroundColor: '#673AB7'
+			},
+			overlay:
+			{
+				zIndex: 2
 			}
-		}
+		};
+	}
 
 	/** Gets fired when the route changes.
 	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
@@ -50,23 +44,35 @@ export default class App extends Component {
 		this.currentUrl = e.url;
 	};
 
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	      sidebarOpen: false
+	    };
+			
+		this.onSetSidebarOpen = this.onSetSidebar.bind(this,true);
+		this.onSetSidebar = this.onSetSidebar.bind(this);
+	}
+
 	render() {
 
-		var sidebarContent = <AppSideBar />;
+		let sidebarContent = <AppSideBar />;
 
 		return (
 			<div id="app">
-			<Header hamburgerClick={this.onSetSidebarOpen.bind(this, true)}/>
-			<Sidebar sidebar={sidebarContent}
-						styles={this.sidebarStyle()}
-            open={this.state.sidebarOpen}
-            onSetOpen={this.onSetSidebarOpen}>
-						<Router onChange={this.handleRoute}>
-							<Home path="/" />
-							<Profile path="/profile/" user="me" />
-							<Profile path="/profile/:user" />
-						</Router>
-      </Sidebar>
+				<Header hamburgerClick={this.onSetSidebarOpen} />
+				<Sidebar sidebar={sidebarContent}
+					styles={this.sidebarStyle()}
+					open={this.state.sidebarOpen}
+					onSetOpen={this.onSetSidebar}
+				>
+					<Router onChange={this.handleRoute}>
+						<Home path="/" />
+						<Profile path="/profile/" user="me" />
+						<Profile path="/profile/:user" />
+					</Router>
+				</Sidebar>
 			</div>
 		);
 	}
