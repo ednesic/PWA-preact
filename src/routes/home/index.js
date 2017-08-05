@@ -1,6 +1,12 @@
 import { h, Component } from 'preact';
 import style from './style';
-import { SimpleSlider, BannerSlider, MultipleBannerSlider } from '../../components/slider';
+import {
+	SimpleSliderWith3,
+	SimpleSliderWith2,
+	BannerSlider,
+	MultipleBannerSlider
+} from '../../components/slider';
+import ClubStar from '../../components/clubStar';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -30,27 +36,36 @@ export default class Home extends Component {
 			<div class={style.home}>
 				<h1>Home</h1>
 				{res.map((item) => {
+					const title = <h2>{item.title}</h2>;
 					switch (item.type) {
 						case 3:
 							return <BannerSlider itens={item.frames[0].itens} />;
 						case 4:
-							return <SimpleSlider itens={item.frames[0].itens} />;
+							return (
+								<div>
+									{title} <SimpleSliderWith3 itens={item.frames[0].itens} />
+								</div>);
 						case 5:
+							return (
+								<div>
+									{title} <ClubStar itens={item.frames[0].itens} />
+								</div>);
+						case 7:
+							return (
+								<div>
+									{title} <SimpleSliderWith2 itens={item.frames[0].itens} />
+								</div>);
+						case 2:
 							return <MultipleBannerSlider itens={item.frames[0].itens} />;
-						// case 3:
-						// 	return <SimpleSlider itens={item.frames.itens} />;
-						// case 4:
-						// 	return <SimpleSlider itens={item.frames.itens} />;
 						// case 5:
-						// 	 return <SimpleSlider itens={item.frames.itens} />;
+						// 	 return <SimpleSlider itens={item.frames[0].itens} />;
 						// case 6:
-						// 	return <SimpleSlider itens={item.frames.itens} />;
+						// 	return <SimpleSlider itens={item.frames[0].itens} />;
 						// case 7:
-						// 	return <SimpleSlider itens={item.frames.itens} />;
+						// 	return <SimpleSlider itens={item.frames[0].itens} />;
 						default:
 					}
 				})}
-				<p>This is the Home component.</p>
 			</div>
 		);
 	}
