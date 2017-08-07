@@ -3,7 +3,9 @@ import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
 import Img from 'react-image';
 import style from './style';
+import pureRender from 'pure-render-decorator';
 
+@pureRender
 export default class AppSideBar extends Component {
 
 	render() {

@@ -1,6 +1,8 @@
 import { Component, PropTypes } from 'preact';
 import style from './style';
+import pureRender from 'pure-render-decorator';
 
+@pureRender
 export default class BannerImage extends Component {
 
 		static propTypes = {

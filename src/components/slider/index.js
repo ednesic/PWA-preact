@@ -3,7 +3,9 @@ import Slider from 'react-slick';
 import StoreItem from '../storeItem';
 import BannerImage from '../bannerImage';
 import style from './style';
+import pureRender from 'pure-render-decorator';
 
+@pureRender
 export class BannerSlider extends Component {
 
 		static propTypes = {
@@ -34,6 +36,7 @@ export class BannerSlider extends Component {
 
 }
 
+@pureRender
 export class SimpleSliderWith3 extends Component {
 
 		static propTypes = {
@@ -81,6 +84,7 @@ export class SimpleSliderWith3 extends Component {
 		}
 }
 
+@pureRender
 export class SimpleSliderWith2 extends Component {
 
 		static propTypes = {
@@ -127,6 +131,7 @@ export class SimpleSliderWith2 extends Component {
 		}
 }
 
+@pureRender
 export class MultipleBannerSlider extends Component {
 
 		static propTypes = {

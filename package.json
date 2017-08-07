@@ -26,6 +26,7 @@
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preact-router": "^2.5.4",
+    "pure-render-decorator": "^1.2.1",
     "react-image": "^1.0.1",
     "react-sidebar": "^2.3.2",
     "react-slick": "^0.14.11"
