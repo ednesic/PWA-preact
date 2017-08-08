@@ -32,6 +32,10 @@ export default class App extends Component {
 			overlay:
 			{
 				zIndex: 2
+			},
+			content:
+			{
+				'overflow-x': 'hidden'
 			}
 		};
 	}
@@ -50,7 +54,7 @@ export default class App extends Component {
 	    this.state = {
 	      sidebarOpen: false
 	    };
-			
+
 		this.onSetSidebarOpen = this.onSetSidebar.bind(this,true);
 		this.onSetSidebar = this.onSetSidebar.bind(this);
 	}

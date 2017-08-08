@@ -12,16 +12,17 @@ export default class ClubStar extends Component {
 		}
 
 		render() {
-			return (<figure className={style.clubStarFigure}>
-				<div className={style.positioning}>
-					{ this.props.itens.map(item =>
-						(<div className={style.clubStarItem}>
-							<StoreItem item={item} />
+			return (
+				<figure className={style.clubStarFigure}>
+					<div className={style.positioning}>
+						{ this.props.itens.map(item =>
+							(<div className={style.clubStarItem}>
+								<StoreItem item={item} />
 					 </div>)) }
-				</div>
-				<div className={style.clubStarBanner}>
-					<BannerImage banner={this.props.itens[0].bannerURL} />
-				</div>
-			</figure>);
+					</div>
+					<div className={style.clubStarBanner}>
+						<BannerImage banner={this.props.itens[0].bannerURL} />
+					</div>
+				</figure>);
 		}
 }
