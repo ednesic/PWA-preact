@@ -72,6 +72,16 @@ export class Categories extends Component {
 
 export class Highlights extends Component {
 
+	storeHighlightsItens(itens){
+		return this.state.itens.map(item => {
+			const title = <h1>{item.title}</h1>;
+			return (
+				<div>
+					{title} <SimpleSliderWith3 itens={item.frames[0].itens} />
+				</div>);
+		});
+	}
+
 	state = {
 		itens: []
 	}
@@ -87,12 +97,7 @@ export class Highlights extends Component {
 	render() {
 		return (
 			<div>
-				{this.state.itens.map(item => {
-					const title = <h1>{item.title}</h1>;
-					return (<div>
-						{title} <SimpleSliderWith3 itens={item.frames[0].itens} />
-					</div>);
-				})}
+				{this.storeHighlightsItens(this.state.itens)}
 			</div>
 		);
 	}

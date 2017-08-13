@@ -54,8 +54,8 @@ export default class Home extends Component {
 			<div class={style.home}>
 				{this.headerButtons()}
 				<Slider ref={(c) => { this.slider = c; }} {...settings}>
-					<div><Categories /></div>
-					<div><Highlights /></div>
+					<div><Categories updateSlider={this.forceSliderUpdate} /></div>
+					<div><Highlights updateSlider={this.forceSliderUpdate} /></div>
 				</Slider>
 			</div>
 		);
