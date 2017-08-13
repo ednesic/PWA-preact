@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'preact';
 import style from './style';
 import pureRender from 'pure-render-decorator';
-import StoreItem from '../../storeItem';
+import StoreItem from '../storeItem';
 
 @pureRender
 export default class DoubleStoreItem extends Component {

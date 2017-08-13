@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'preact';
 import style from './style';
-import StoreItem from '../../storeItem';
+import StoreItem from '../storeItem';
 import BannerImage from '../bannerImage';
 import pureRender from 'pure-render-decorator';
 

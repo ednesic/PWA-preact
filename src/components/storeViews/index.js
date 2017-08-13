@@ -4,12 +4,13 @@ import {
 	SimpleSliderWith2,
 	BannerSlider,
 	MultipleBannerSlider
-} from './slider';
+} from './sliders';
 import ClubStar from './clubStar';
 import BannerImage from './bannerImage';
 import DoubleStoreItem from './doubleStoreItem';
+import { StoreItemApi } from '../../logic/storeItemApi';
 
-export default class SliderChooser extends Component {
+export class Categories extends Component {
 
 	storeItensSwitch(itens) {
 		return itens.map((item) => {
@@ -49,10 +50,50 @@ export default class SliderChooser extends Component {
 		});
 	}
 
+	state = {
+		itens: []
+	}
+
+	componentWillMount() {
+		StoreItemApi.getHighlights()
+			.then(data => {
+				if (data.menu)
+					this.setState({ itens: data.menu.sections });
+			});
+	}
+
 	render() {
 		return (
 			<div>
-				{this.storeItensSwitch(this.props.itens)}
+				{this.storeItensSwitch(this.state.itens)}
 			</div>);
+	}
+}
+
+export class Highlights extends Component {
+
+	state = {
+		itens: []
+	}
+
+	componentWillMount() {
+		StoreItemApi.getCategories()
+			.then(data => {
+				if (data.menu)
+					this.setState({ itens: data.menu.sections });
+			});
+	}
+
+	render() {
+		return (
+			<div>
+				{this.state.itens.map(item => {
+					const title = <h1>{item.title}</h1>;
+					return (<div>
+						{title} <SimpleSliderWith3 itens={item.frames[0].itens} />
+					</div>);
+				})}
+			</div>
+		);
 	}
 }

@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'preact';
 import style from './style';
-import { getFreePrice } from '../../helpers';
+import { getFreePrice } from '../../../helpers';
 import pureRender from 'pure-render-decorator';
 
 @pureRender

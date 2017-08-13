@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'preact';
 import Slider from 'react-slick';
-import StoreItem from '../../storeItem';
+import StoreItem from '../storeItem';
 import BannerImage from '../bannerImage';
 import style from './style';
 import pureRender from 'pure-render-decorator';
