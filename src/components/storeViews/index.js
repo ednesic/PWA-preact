@@ -2,6 +2,7 @@ import { Component } from 'preact';
 import {
 	SimpleSliderWith3,
 	SimpleSliderWith2,
+	SimpleSlider,
 	BannerSlider,
 	MultipleBannerSlider
 } from './sliders';
@@ -74,10 +75,10 @@ export class Highlights extends Component {
 
 	storeHighlightsItens(itens){
 		return this.state.itens.map(item => {
-			const title = <h1>{item.title}</h1>;
+			const title = <h3>{item.title}</h3>;
 			return (
 				<div>
-					{title} <SimpleSliderWith3 itens={item.frames[0].itens} />
+					{title} <SimpleSlider itens={item.frames[0].itens} />
 				</div>);
 		});
 	}

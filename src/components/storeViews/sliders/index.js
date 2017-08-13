@@ -14,7 +14,12 @@ export class BannerSlider extends Component {
 
 		render() {
 			const settings = {
+				customPaging(i) {
+					if (this.children.length)
+						return <a><img className={style.bannerPreview} src={this.children[i].children[0].attributes.banner} /></a>;
+				},
 				dots: true,
+				dotsClass: 'slick-dots slick-thumb',
 				infinite: true,
 				speed: 500,
 				mobileFirst: true,
@@ -118,6 +123,34 @@ export class SimpleSliderWith2 extends Component {
 						}
 					}
 				]
+			};
+
+			return (
+				<Slider {...settings} className={style.simpleItemSlider}>
+					{ this.props.itens.map(item =>
+						(<div>
+							<StoreItem item={item} />
+						</div>)) }
+				</Slider>
+			);
+		}
+}
+
+@pureRender
+export class SimpleSlider extends Component {
+
+		static propTypes = {
+			itens: PropTypes.array.isRequired
+		}
+
+		render() {
+			const settings = {
+				centerMode: true,
+				centerPadding: '60px',
+				slidesToShow: 2,
+				infinite: true,
+				mobileFirst: true,
+				arrows: false
 			};
 
 			return (

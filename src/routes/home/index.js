@@ -45,9 +45,10 @@ export default class Home extends Component {
 			mobileFirst: true,
 			arrows: false,
 			draggable: false,
-			fade: true,
 			swipe: false,
-			lazyLoad: true
+			lazyLoad: true,
+			slidesToShow: 1,
+			slidesToScroll: 1
 		};
 
 		return (
